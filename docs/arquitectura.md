@@ -4,11 +4,11 @@
 
 | Componente | Responsabilidad | Estado |
 | --- | --- | --- |
-| `apps/scrapper/` | Obtener y normalizar productos de las categorías objetivo en JSON. | Existe una versión básica. |
+| `apps/scrapper/` | Obtener y normalizar productos de las categorías objetivo en JSON. | Implementado. |
 | Tienda React | Catálogo, detalle, búsqueda, carrito local e interfaz del chat. | Pendiente. |
 | API Express + TypeScript | Orquestar el asistente, sus herramientas y acceso de servidor a Turso. | Pendiente. |
-| Loader Node.js | Leer el JSON, generar embeddings locales y cargar productos. | Pendiente. |
-| `database/` | Conservar migraciones versionadas de Turso. | Pendiente. |
+| `apps/loader/` | Leer el JSON, generar embeddings locales y cargar productos en Turso/libSQL. | Implementado; requiere aplicar migraciones y configurar credenciales. |
+| `database/` | Conservar migraciones versionadas de Turso/libSQL. | SQL 001 y 002; aplicación manual. |
 | Turso/libSQL | Productos, documentos de servicio y vectores. | Pendiente. |
 
 La organización exacta de las aplicaciones futuras se decidirá al planificar. Cada aplicación tendrá su propio manifiesto, lockfile y pipeline de pnpm; no usar pnpm workspaces ni Turborepo. React Router, Tailwind, Zustand, Zod y AI SDK forman parte del stack acordado; proponer y consultar nuevas dependencias relevantes antes de seleccionarlas.

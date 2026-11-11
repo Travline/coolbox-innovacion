@@ -10,7 +10,7 @@ La conversación dura la visita y vive en memoria del cliente; no se guarda en T
 
 La API usa AI SDK y un modelo de Google AI Studio aún por seleccionar. Las herramientas deberán exponer operaciones delimitadas de lectura, con parámetros validados, para buscar productos por texto y atributos, recuperar productos por identificador y consultar similitud de productos y documentos de servicio. Combinar resultados estructurados y semánticos según la consulta. No otorgar al modelo SQL arbitrario ni capacidad de escribir en Turso.
 
-Las recomendaciones y sus motivos deben estar respaldados por atributos recuperados. El vector de consulta debe utilizar el mismo modelo y preprocesamiento que los vectores almacenados; la elección y el lugar donde se generará ese vector en el entorno de ejecución están pendientes. Documentos ausentes, desactualizados o contradictorios no deben convertirse en afirmaciones categóricas. En particular, las políticas del vendedor Marketplace pueden diferir de las de productos propios.
+Las recomendaciones y sus motivos deben estar respaldados por atributos recuperados. El vector de consulta debe utilizar el mismo modelo y preprocesamiento que los vectores almacenados; se eligió `intfloat/multilingual-e5-small` y queda pendiente el lugar donde se generará ese vector en el entorno de ejecución. Documentos ausentes, desactualizados o contradictorios no deben convertirse en afirmaciones categóricas. En particular, las políticas del vendedor Marketplace pueden diferir de las de productos propios.
 
 ## Tarjetas de recomendaciones
 

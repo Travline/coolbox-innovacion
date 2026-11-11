@@ -1,0 +1,13 @@
+node_modules/
+package-lock.json
+pnpm-lock.yaml
+.env
+dist/
+build/
+coverage/
+.env
+.env.*
+!.env.example
+apps/loader/.cache/
+
+!apps/loader/pnpm-lock.yaml

@@ -4,7 +4,7 @@ Las siguientes elecciones se resolverán al planificar la implementación; no re
 
 | Decisión | Evaluación pendiente |
 | --- | --- |
-| Modelo local multilingüe de embeddings | Presentar opciones y consultar la elección. Comparar recuperación en español sobre productos reales, tamaño, CPU/memoria, licencia, dimensiones, integración Node y despliegue. Determinar dónde se generará el vector de consulta de la API sin depender del equipo del loader. |
+| Despliegue de embeddings | Se eligió `intfloat/multilingual-e5-small` (384 dimensiones). El loader usa Transformers.js con Xenova/multilingual-e5-small, revisión 761b726dd34fb83930e26aab4e9ac3899aa1fa78, fp32. Definir dónde generar el vector de consulta de la API sin depender del equipo del loader. Evaluar la recuperación en español con el catálogo real. |
 | Modelo de Google AI Studio | Comparar opciones vigentes por calidad en español, herramientas, streaming, latencia, límites y costo; elegir con el responsable. |
 | MCP-UI o React | Comparar compatibilidad con AI SDK, complejidad, accesibilidad y necesidad real frente a componentes React con resultados estructurados; consultar antes de incorporar una dependencia. |
 | Cliente Turso | Comparar `@libsql/client/web` para libSQL remoto con `@tursodatabase/serverless` basado en `fetch` para Turso Database; verificar motor, compatibilidad de índice vectorial y credenciales antes de elegir. Ver [referencia oficial](https://docs.turso.tech/sdk/ts/reference). |
