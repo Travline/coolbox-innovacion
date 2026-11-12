@@ -2,7 +2,7 @@
 
 ## Función y estado
 
-`apps/loader/` importa el catálogo generado por el scraper en la base Turso/libSQL. Valida la entrada completa, genera embeddings locales, actualiza productos y sincroniza sus categorías y SKU. No importa documentos de servicio ni genera embeddings para las consultas del chatbot. El usuario debe crear la base y aplicar `database/001_initial.sql` y después `database/002_embedding_hash.sql`; el loader no aplica migraciones.
+`apps/loader/` importa el catálogo generado por el scraper en la base Turso/libSQL. Valida la entrada completa, genera embeddings locales, actualiza productos y sincroniza sus categorías y SKU. Según el responsable, el catálogo y sus embeddings ya están cargados. No importa documentos de servicio ni genera embeddings para las consultas del chatbot. Al preparar una base nueva se debe crear la base y aplicar `database/001_initial.sql` y después `database/002_embedding_hash.sql`; el loader no aplica migraciones.
 
 ## Configuración y ejecución
 
@@ -25,7 +25,7 @@ Se utiliza `Xenova/multilingual-e5-small` en precisión completa (`fp32`), revis
 
 Cada producto se guarda con su conjunto actual de categorías y SKU en un lote transaccional. Las variantes y relaciones ausentes de un producto presente se eliminan; los productos que no figuren en el archivo se conservan. Las categorías compartidas se actualizan. Se presupone un único loader activo.
 
-El loader informa el avance cada 10 productos. Un fallo muestra el número e ID del producto, la etapa y la causa disponible, ocultando la URL y el token configurados; detiene la ejecución con código distinto de cero: las transacciones ya confirmadas quedan visibles y las restantes no se aplican. `catalog_metadata.last_successful_import_at` solo cambia al terminar todo el catálogo, por lo que una carga parcial puede convivir con la fecha de la última carga completa. Corregir la causa y repetir `pnpm load`; los vectores válidos se reutilizan. Los resultados o costos de una carga remota real dependerán de la instancia y aún deben verificarse con tus credenciales.
+El loader informa el avance cada 10 productos. Un fallo muestra el número e ID del producto, la etapa y la causa disponible, ocultando la URL y el token configurados; detiene la ejecución con código distinto de cero: las transacciones ya confirmadas quedan visibles y las restantes no se aplican. `catalog_metadata.last_successful_import_at` solo cambia al terminar todo el catálogo, por lo que una carga parcial puede convivir con la fecha de la última carga completa. Corregir la causa y repetir `pnpm load`; los vectores válidos se reutilizan. Las condiciones y costos de futuras cargas dependen de la instancia.
 
 ## Comprobación en Turso
 

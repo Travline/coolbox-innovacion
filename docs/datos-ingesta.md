@@ -8,7 +8,7 @@
 
 Cada SKU contiene `skuId`, `name`, `reference`, `ean`, `images` ordenadas (`url`, `alt`), `seller` (`id`, `name`) o `null`, `price`, `listPrice` y `stock`. Se elige el vendedor predeterminado, o el primero si no hay uno marcado; sin dato disponible precio o stock son `null`. No se suman existencias entre vendedores. El HTML original no está sanitizado: se debe sanitizar antes de mostrarlo. `descriptionText` se obtiene con `html-to-text` y es apropiado para preparar texto de búsqueda.
 
-`database/001_initial.sql` define productos, categorías, su relación, SKU, documentos de servicio y fecha de última carga completa. Incluye columna vectorial de producto y documento de 384 dimensiones e índice vectorial de productos. Es SQL para Turso/libSQL; la migración no se ha aplicado ni probado en una instancia remota. Habilitar claves foráneas en cada conexión. El loader está implementado en `apps/loader/`; ver [su documentación](loader.md). La migración `002_embedding_hash.sql` añade la huella que permite reutilizar vectores.
+`database/001_initial.sql` define productos, categorías, su relación, SKU, documentos de servicio y fecha de última carga completa. Incluye columna vectorial de producto y documento de 384 dimensiones e índice vectorial de productos. El responsable informó que los productos y sus embeddings ya están cargados en Turso; esa instancia no se ha inspeccionado en esta revisión. Habilitar claves foráneas en cada conexión. El loader está implementado en `apps/loader/`; ver [su documentación](loader.md). La migración `002_embedding_hash.sql` añade la huella que permite reutilizar vectores.
 
 ## Modelo previsto
 

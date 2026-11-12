@@ -4,7 +4,7 @@ Prototipo de una tienda que reproduce la experiencia visual de Coolbox y añade 
 
 ## Estado actual
 
-Existe `apps/scrapper/`, un scraper en JavaScript que consulta categorías de Coolbox y genera un JSON, y una migración inicial SQL en `database/`. El loader de productos y embeddings está implementado en `apps/loader/`; la tienda, la API y el chatbot descritos en `docs/` son objetivos futuros. Las migraciones deben aplicarse manualmente antes de cargar en Turso.
+Existe `apps/scrapper/`, un scraper en JavaScript que consulta categorías de Coolbox y genera un JSON, y migraciones SQL en `database/`. El loader de productos y embeddings está implementado en `apps/loader/`. Según lo informado por el responsable, los productos y sus embeddings ya se cargaron en Turso; la tienda, la API y el chatbot descritos en `docs/` son objetivos futuros. Las migraciones deben aplicarse manualmente antes de cargar en una base nueva.
 
 ## Ejecutar el scraper existente
 
@@ -21,6 +21,7 @@ El primer script consulta las categorías; el segundo requiere acceso de red y r
 ## Documentación
 
 - [Visión y alcance](docs/vision.md): producto y límites del prototipo.
+- [Historias de usuario](docs/historias-usuario.md): necesidades, criterios de aceptación y orden sugerido.
 - [Arquitectura](docs/arquitectura.md): componentes, límites y flujos.
 - [Datos e ingesta](docs/datos-ingesta.md): scraper, loader, migraciones y búsqueda vectorial.
 - [Loader](docs/loader.md): configuración, embeddings y carga repetible.

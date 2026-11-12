@@ -16,4 +16,4 @@ Reproducir la apariencia y los recorridos principales de Coolbox para que la ate
 
 Los hechos de productos y servicio deben proceder de datos recuperados, no de afirmaciones plausibles del modelo. Si falta evidencia, el asistente lo indicará y ofrecerá canales de atención oficiales verificados. El catálogo no se consulta en tiempo real en Coolbox: sus precios y existencias pueden cambiar entre cargas.
 
-Los textos oficiales de servicio se incorporarán en una etapa posterior. El responsable indicó que todavía no dispone de documentos; se identificaron fuentes públicas oficiales en [asistente.md](asistente.md). No se definen aquí fechas, historias de usuario ni un plan de implementación.
+Los textos oficiales de servicio se incorporarán en una etapa posterior. El responsable indicó que todavía no dispone de documentos; se identificaron fuentes públicas oficiales en [asistente.md](asistente.md). Las necesidades y su orden sugerido se recogen en [historias de usuario](historias-usuario.md); cada historia se planificará antes de implementarse.
