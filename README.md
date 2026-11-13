@@ -22,6 +22,8 @@ El primer script consulta las categorías; el segundo requiere acceso de red y r
 
 - [Visión y alcance](docs/vision.md): producto y límites del prototipo.
 - [Historias de usuario](docs/historias-usuario.md): necesidades, criterios de aceptación y orden sugerido.
+- [Gestor de planes y agentes](docs/gestor-agentes.md): planes, dependencias y coordinación de la futura implementación.
+- [Información y preparativos del responsable](docs/dependencias-responsable.md): decisiones, accesos y referencias que necesitamos para cada etapa.
 - [Arquitectura](docs/arquitectura.md): componentes, límites y flujos.
 - [Datos e ingesta](docs/datos-ingesta.md): scraper, loader, migraciones y búsqueda vectorial.
 - [Loader](docs/loader.md): configuración, embeddings y carga repetible.
