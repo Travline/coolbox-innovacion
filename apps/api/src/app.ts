@@ -4,7 +4,8 @@ import type { Recommendation } from './chat.js';
 import { validateServiceSource } from './service.js';
 import { contactGuidance } from './contacts.js';
 type Chat = (input: unknown, emit?: (item: Recommendation) => void, signal?: AbortSignal) => Promise<unknown>;
-const defaultOrigins = ['http://localhost:5173', 'http://127.0.0.1:5173', 'http://localhost:4173', 'http://127.0.0.1:4173'];
+const defaultOrigins = ['http://localhost:5173', 'http://127.0.0.1:5173', 'http://localhost:4173', 'http://127.0.0.1:4173', 'https://coolbox-innovacion-front.vercel.app'];
+
 function isHttpOrigin(origin: string): boolean {
   try {
     const url = new URL(origin);
