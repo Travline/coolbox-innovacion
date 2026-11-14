@@ -11,3 +11,9 @@ coverage/
 apps/loader/.cache/
 
 !apps/loader/pnpm-lock.yaml
+
+!apps/store/pnpm-lock.yaml
+!apps/api/pnpm-lock.yaml
+
+*.tsbuildinfo
+apps/api/.cache/

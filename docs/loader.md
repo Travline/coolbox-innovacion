@@ -23,9 +23,26 @@ Se utiliza `Xenova/multilingual-e5-small` en precisión completa (`fp32`), revis
 
 ## Actualizaciones y recuperación
 
+Conservar separadas la credencial de escritura usada aquí y las credenciales de lectura de las aplicaciones. Para preparar una base nueva, aplicar manualmente `database/001_initial.sql` y `database/002_embedding_hash.sql` en ese orden. No ejecutar migraciones ni ensayos de escritura sobre la instancia existente durante una revisión de solo lectura.
+
+En cada actualización manual:
+
+1. Desde `apps/scrapper/`, ejecutar `pnpm install --frozen-lockfile` si hace falta y luego `node main.js`. Comprobar que termina con código cero y muestra `Guardados ... productos únicos`. Si informa `Extracción incompleta` o termina con error, detenerse: el JSON anterior permanece y no representa necesariamente la extracción intentada.
+2. Desde `apps/loader/`, configurar localmente `.env` según la sección anterior y ejecutar `pnpm load`. Confirmar código cero y el mensaje `Carga completa.`; conservar los recuentos de productos y embeddings nuevos y reutilizados de la salida, sin guardar secretos.
+3. Consultar los recuentos y las fechas con una credencial de lectura mediante el cliente de Turso que corresponda. Comparar `extracted_at` con la extracción que se pretendía cargar y revisar resultados inesperados. Los productos antiguos ausentes del JSON permanecen, de modo que el recuento total no tiene por qué coincidir con la cantidad extraída.
+
+```sql
+SELECT COUNT(*) AS products FROM products;
+SELECT COUNT(*) AS skus FROM skus;
+SELECT COUNT(*) AS products_without_embedding FROM products WHERE embedding IS NULL;
+SELECT last_successful_import_at, extracted_at FROM catalog_metadata WHERE id = 1;
+```
+
+Si no existe la fila de metadatos, no hay fecha de carga completa registrada. Las fechas y recuentos son comprobaciones útiles, pero no verifican por sí solos el contenido ni demuestran que no haya cambios parciales.
+
 Cada producto se guarda con su conjunto actual de categorías y SKU en un lote transaccional. Las variantes y relaciones ausentes de un producto presente se eliminan; los productos que no figuren en el archivo se conservan. Las categorías compartidas se actualizan. Se presupone un único loader activo.
 
-El loader informa el avance cada 10 productos. Un fallo muestra el número e ID del producto, la etapa y la causa disponible, ocultando la URL y el token configurados; detiene la ejecución con código distinto de cero: las transacciones ya confirmadas quedan visibles y las restantes no se aplican. `catalog_metadata.last_successful_import_at` solo cambia al terminar todo el catálogo, por lo que una carga parcial puede convivir con la fecha de la última carga completa. Corregir la causa y repetir `pnpm load`; los vectores válidos se reutilizan. Las condiciones y costos de futuras cargas dependen de la instancia.
+El loader informa el avance cada 10 productos. Un fallo muestra el número e ID del producto, la etapa y la causa disponible, ocultando la URL y el token configurados; detiene la ejecución con código distinto de cero: las transacciones ya confirmadas quedan visibles y las restantes no se aplican. `catalog_metadata.last_successful_import_at` solo cambia al terminar todo el catálogo, por lo que una carga parcial puede convivir con la fecha de la última carga completa. Revisar la salida de la ejecución para detectar el fallo, corregir la causa y repetir `pnpm load` con el archivo completo válido; los vectores válidos se reutilizan. Confirmar el éxito y repetir las consultas anteriores. Las condiciones y costos de futuras cargas dependen de la instancia.
 
 ## Comprobación en Turso
 

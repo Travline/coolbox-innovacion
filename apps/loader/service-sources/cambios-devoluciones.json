@@ -1,0 +1,29 @@
+{
+  "id": "cambios-devoluciones",
+  "title": "Políticas de cambios y devoluciones Coolbox",
+  "sourceUrl": "https://www.coolbox.pe/cambios-y-devoluciones",
+  "checkedAt": "2026-11-13",
+  "reviewed": true,
+  "sections": [
+    {
+      "heading": "Condiciones y plazo",
+      "applicability": "propio",
+      "content": "La política solicita el comprobante de pago. Indica un plazo de 15 días calendario desde la emisión del comprobante en compras físicas y desde la entrega en ventas online. El producto debe estar operativo, sellado o con uso mínimo razonable para su verificación, y devolverse con sus accesorios, componentes, manuales y empaques originales cuando corresponda, sin deterioro, manipulación excesiva ni alteración. Existen condiciones y excepciones adicionales: consultar la política completa."
+    },
+    {
+      "heading": "Solicitud y disponibilidad",
+      "applicability": "propio",
+      "content": "La página indica que las compras físicas y los productos propios de canales online se presentan en tienda para comprobar su estado y el cumplimiento de la política. Los cambios están sujetos a disponibilidad y stock; la nota de crédito descrita se usa en tiendas físicas y no en canales online. Scooters y bicicletas eléctricas tienen políticas específicas."
+    },
+    {
+      "heading": "Restricciones para productos y servicios",
+      "applicability": "propio",
+      "content": "La política indica que las solicitudes sobre productos de liquidación, remate, digitales de descarga inmediata, reacondicionados, reempacados, videojuegos, ciertos artículos de contacto personal y equipos de gimnasio se evalúan conforme al artículo 97 del Código de Protección y Defensa del Consumidor. Señala que los servicios de instalación, configuración y armado a domicilio no se cambian ni devuelven, y que se aplica su garantía correspondiente. La política para vehículos de movilidad personal es distinta; consulte sus condiciones específicas."
+    },
+    {
+      "heading": "Devolución de dinero y nota de crédito",
+      "applicability": "propio",
+      "content": "La política indica que una nota de crédito por cambio es personal, no transferible ni canjeable por dinero y se usa completa en una tienda física, con documento impreso y DNI físico vigente; solo una por transacción. Para solicitar devolución de dinero distingue pagos y entrega: compras físicas o pedidos online ya entregados se reembolsan por transferencia en un plazo estimado de hasta 15 días calendario; pedidos online aún no entregados pagados con tarjeta, Cuotéalo o Power Pay, por extorno según el banco, aproximadamente 30 días calendario. Pago Efectivo sigue el procedimiento de Mercado Pago indicado en la página. La política exige condiciones adicionales para la titularidad o autorización de la cuenta."
+    }
+  ]
+}

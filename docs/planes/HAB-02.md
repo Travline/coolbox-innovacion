@@ -2,7 +2,7 @@
 
 ## Objetivo y alcance
 
-Documentar y comprobar el acceso al catálogo y su actualización manual, conservando el scraper y el loader actuales. La validación de fallos y permisos se realizará en una base de prueba; la instancia cargada se revisará solo en lectura.
+Documentar y comprobar el acceso al catálogo y su actualización manual, conservando el scraper y el loader actuales. El responsable autorizó comprobar permisos mediante una fila temporal sin relaciones en la instancia actual, eliminándola después. La recuperación ante fallos se comprobó con datos sintéticos en libSQL en memoria, sin modificar el catálogo real.
 
 **Dependencias:** ninguna para preparar el procedimiento. La comprobación integrada de tienda y API requiere que esas aplicaciones estén disponibles. **Capacidades que habilita:** HU-13 y HAB-03. Los criterios están en [historias de usuario](../historias-usuario.md#hab-02--preparar-el-acceso-y-la-actualización-de-datos).
 
@@ -23,7 +23,7 @@ Documentar y comprobar el acceso al catálogo y su actualización manual, conser
 
 ## Validación y aceptación
 
-- En una base de prueba, comprobar lectura con la credencial prevista y rechazo de escrituras; contrastar también qué tablas son accesibles con ese token.
+- Comprobar lectura con la credencial prevista y rechazo de escrituras, y contrastar las tablas accesibles. El responsable autorizó una comprobación controlada con una fila temporal en la instancia actual; verificar su eliminación.
 - Con datos de prueba y un fallo controlado, verificar que la carga incompleta no actualice la fecha de última carga completa, documentar los cambios parciales observables y comprobar la recuperación mediante una nueva ejecución completa.
 - Revisar la instancia cargada solo en lectura cuando se disponga de acceso. Verificar las configuraciones de tienda y API cuando estén implementadas; registrar cualquier comprobación pendiente.
 - Consultar antes de ejecutar suites existentes conforme a `AGENTS.md` y registrar los resultados y sus limitaciones.
@@ -31,5 +31,5 @@ Documentar y comprobar el acceso al catálogo y su actualización manual, conser
 ## Decisiones y supuestos
 
 - Las actualizaciones seguirán siendo manuales y se acepta el comportamiento actual de cargas parciales; el procedimiento no promete detectar una interrupción basándose únicamente en la fecha del catálogo.
-- La base de prueba y las credenciales necesarias deberán estar disponibles durante la implementación y validación; ver [DR-07](../dependencias-responsable.md#dr-07--base-y-credenciales-de-prueba).
+- El responsable eligió no crear una base Turso de prueba y autorizó la prueba temporal indicada; ver [DR-07](../dependencias-responsable.md#dr-07--base-y-credenciales-de-prueba).
 - Este documento es un plan; sus comprobaciones aún no se han realizado.

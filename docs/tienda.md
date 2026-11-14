@@ -1,5 +1,11 @@
 # Tienda y carrito
 
+## Estado actual
+
+La portada consulta Turso en lectura, muestra categorías y la fecha de carga, y advierte sobre cambios de precio y stock. El catálogo incluye búsqueda, filtros, orden y paginación; su validación real está en curso. El detalle está conectado desde productos del catálogo y del asistente, muestra variantes y sanitiza la descripción HTML con DOMPurify. La cabecera y el chat se conservan en el detalle. El carrito permite agregar, modificar y quitar artículos, persiste en el navegador y revalida sus SKU; el responsable comprobó su funcionamiento.
+
+Las subcategorías de la vista de categoría se pliegan en móvil para dejar espacio a los productos; el responsable confirmó su presentación. Las imágenes de banners y sus ubicaciones se documentan en [la tienda](../apps/store/README.md).
+
 ## Experiencia prevista
 
 La tienda debe reproducir con la mayor fidelidad posible el inicio de Coolbox, sus recorridos y su presentación en escritorio y móvil. Pedir capturas de referencia durante la planificación visual. Utilizar React, React Router, Tailwind y Zustand; la organización detallada de componentes y las rutas concretas se definirán al implementar.

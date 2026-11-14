@@ -1,0 +1,19 @@
+{
+  "id": "terminos-condiciones",
+  "title": "Términos y condiciones",
+  "sourceUrl": "https://www.coolbox.pe/terminos-y-condiciones",
+  "checkedAt": "2026-11-13",
+  "reviewed": true,
+  "sections": [
+    {
+      "heading": "Alcance y cambios",
+      "applicability": "ambos",
+      "content": "La página de términos indica que las compras en Coolbox.pe están sujetas a sus condiciones y a la legislación peruana. También indica que Coolbox puede actualizar sus términos y recomienda revisarlos junto con los demás documentos aplicables antes de usar el sitio o realizar una compra. Esta selección no sustituye la lectura completa de los términos ni de las condiciones de Marketplace."
+    },
+    {
+      "heading": "Compra y documentos aplicables",
+      "applicability": "ambos",
+      "content": "Los términos de Coolbox.pe mencionan condiciones adicionales que pueden aplicar, entre ellas Marketplace, cambios y devoluciones, garantía y cobertura de entrega. Indican que el registro de cuenta es requerido para comprar y que los términos pueden cambiar. El contenido íntegro y las condiciones vigentes se consultan en la página oficial; este prototipo no permite comprar ni gestionar cuentas."
+    }
+  ]
+}

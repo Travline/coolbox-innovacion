@@ -25,8 +25,8 @@ Puedes responder cada punto aquí, indicando una referencia o la disponibilidad 
 - **Necesario en:** implementación y validación con el catálogo real; la evaluación de HAB-01 requiere lectura de la instancia cargada.
 - **Te pedimos:** confirmar que la dirección de la base Turso y una credencial de solo lectura estarán disponibles en el entorno de ejecución; indicar quién puede configurar el acceso. Antes de publicar la tienda, facilitar la comprobación del alcance real de la credencial accesible desde el navegador.
 - **Para qué:** consultar y evaluar los productos y embeddings cargados, y determinar qué datos son públicos por el alcance de lectura.
-- **Estado:** Pendiente de confirmar disponibilidad y alcance.
-- **Respuesta o referencia:** La carga de productos y embeddings fue informada por el responsable; la instancia no ha sido inspeccionada en esta revisión. La dirección puede indicarse si no contiene credenciales; el token debe configurarse de forma segura.
+- **Estado:** Disponible.
+- **Respuesta o referencia:** El responsable confirmó que la credencial de la tienda es de solo lectura. La credencial de tienda rechazó una escritura controlada y permite leer products, categories, product_categories, skus, catalog_metadata y service_documents; todos sus datos deben considerarse públicos.
 
 ### DR-03 — Acceso a Google AI Studio
 
@@ -34,8 +34,8 @@ Puedes responder cada punto aquí, indicando una referencia o la disponibilidad 
 - **Necesario en:** implementación y validación con el modelo real.
 - **Te pedimos:** confirmar que habrá una clave de Gemini API configurada de forma segura en la API y que la cuenta tiene acceso y cuota para `gemini-3.5-flash-lite`. Indicar cualquier límite de uso o presupuesto que debamos respetar.
 - **Para qué:** verificar las recomendaciones con el modelo acordado. Si el modelo no está disponible, se registrará el bloqueo antes de elegir otro.
-- **Estado:** Pendiente de confirmar disponibilidad, cuota y límites.
-- **Respuesta o referencia:** Por completar. No escribir la clave; HU-02 prevé `.env.example` sin secretos.
+- **Estado:** Disponible.
+- **Respuesta o referencia:** El responsable configuró la clave localmente e indicó que usa el plan gratuito: autoriza una sola prueba real del chat; cualquier prueba adicional requiere que primero revise el consumo disponible. Las pruebas habituales de IA serán manuales. El responsable revisó el consumo y autorizó una segunda consulta real para streaming. Se ejecutaron dos pruebas de chat; no se harán más sin volver a consultar el consumo.
 
 ### DR-04 — Fuentes de información de servicio
 
@@ -44,7 +44,7 @@ Puedes responder cada punto aquí, indicando una referencia o la disponibilidad 
 - **Te pedimos:** comunicar cualquier documento oficial o instrucción adicional que deba incorporarse y facilitar la revisión de las fuentes antes de cada presentación.
 - **Para qué:** acordar el material que se verificará y cargará antes de que el asistente responda sobre servicio.
 - **Estado:** Pendiente de revisión para la carga y cada presentación.
-- **Respuesta o referencia:** Se acordó comenzar con las cinco páginas de [asistente.md](asistente.md#fuentes-oficiales-iniciales), preparar sus textos manualmente y revisar su vigencia antes de cada presentación; ver [plan HU-13](planes/HU-13.md).
+- **Respuesta o referencia:** El responsable confirmó que se usarán solo fuentes oficiales, sin documentos adicionales. Se comenzará con las cinco páginas de [asistente.md](asistente.md#fuentes-oficiales-iniciales), preparando textos manuales y revisando su vigencia antes de cada presentación; ver [plan HU-13](planes/HU-13.md).
 
 ### DR-05 — Entorno de demostración y despliegue
 
@@ -61,8 +61,8 @@ Puedes responder cada punto aquí, indicando una referencia o la disponibilidad 
 - **Necesario en:** inicio de la ejecución completa, antes de ejecutar suites existentes.
 - **Te pedimos:** decidir en ese momento si autorizas ejecutar las suites existentes; el coordinador registrará el alcance y cualquier limitación.
 - **Para qué:** cumplir las instrucciones de `AGENTS.md`. El marcador `pnpm test` del scraper actualmente falla porque no hay suite configurada.
-- **Estado:** Pendiente de consultar al iniciar la implementación.
-- **Respuesta o referencia:** No se ha autorizado todavía; ver [gestor de agentes](gestor-agentes.md#coordinación-de-implementación).
+- **Estado:** Resuelto.
+- **Respuesta o referencia:** El responsable autorizó la ejecución de las suites existentes durante la implementación completa; ver [gestor de agentes](gestor-agentes.md#coordinación-de-implementación).
 
 ### DR-07 — Base y credenciales de prueba
 
@@ -70,8 +70,8 @@ Puedes responder cada punto aquí, indicando una referencia o la disponibilidad 
 - **Necesario en:** implementación y validación de acceso y recuperación.
 - **Te pedimos:** confirmar la disponibilidad de una base Turso de prueba separada y de credenciales de lectura y escritura apropiadas, e indicar quién podrá configurarlas de forma segura.
 - **Para qué:** comprobar permisos y simular una carga fallida y su recuperación sin alterar la instancia cargada. La revisión de esa instancia se hará solo en lectura.
-- **Estado:** Pendiente de confirmar disponibilidad.
-- **Respuesta o referencia:** Por completar. No escribir tokens ni credenciales en este documento.
+- **Estado:** Resuelto.
+- **Respuesta o referencia:** El responsable eligió usar la instancia actual y autorizó una escritura temporal en una tabla de poca importancia, seguida de su eliminación, para comprobar permisos. La recuperación ante fallo ya se comprobó con datos sintéticos en una base libSQL en memoria; no se requiere copiar el catálogo. La comprobación en Turso aún está pendiente.
 
 ## Direcciones, endpoints y secretos
 

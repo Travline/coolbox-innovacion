@@ -1,0 +1,34 @@
+{
+  "id": "certificado-garantia",
+  "title": "Certificado de garantía",
+  "sourceUrl": "https://www.coolbox.pe/certificado-de-garantia",
+  "checkedAt": "2026-11-13",
+  "reviewed": true,
+  "sections": [
+    {
+      "heading": "Plazo general y excepciones",
+      "applicability": "propio",
+      "content": "El certificado exige presentar comprobante de pago. Describe una garantía general de un año desde la compra y, para compras online o fonocompras, desde la recepción; indica excepciones, entre ellas tres meses para liquidación, un mes para reacondicionados y seis meses para reempacados. La movilidad eléctrica, sus componentes y otros productos tienen condiciones particulares. Consultar el certificado completo y sus exclusiones antes de determinar la cobertura aplicable."
+    },
+    {
+      "heading": "Productos Marketplace",
+      "applicability": "marketplace",
+      "content": "El certificado señala que los productos identificados como vendidos por Marketplace tienen la garantía del vendedor asociado. Coolbox indica que puede acompañar o intermediar el trámite mediante sus canales de atención; las condiciones dependen de cada vendedor."
+    },
+    {
+      "heading": "Cobertura, plazos y condiciones especiales",
+      "applicability": "propio",
+      "content": "El certificado describe cobertura de defectos de funcionamiento de la unidad principal durante el plazo aplicable y solicita comprobante de pago. Para servicios de instalación, configuración o armado a domicilio indica seis meses si el cliente no manipuló ni cambió el servicio. Para scooters y bicicletas eléctricas los plazos dependen de marca o componente; también hay reglas específicas para protectores de pantalla. Consulte el certificado y sus enlaces para identificar las condiciones correspondientes al producto."
+    },
+    {
+      "heading": "Exclusiones del certificado de garantía",
+      "applicability": "propio",
+      "content": "La fuente enumera exclusiones, entre ellas consumibles y accesorios incluidos, determinados problemas de IMEI, daños por golpes, humedad o uso distinto al manual, suciedad que afecte el funcionamiento y manipulación por servicio técnico no autorizado. También menciona modificaciones físicas o de software y ciertos productos. Consulte la lista completa y las condiciones del certificado, pues una categoría general no sustituye la evaluación del caso."
+    },
+    {
+      "heading": "Ingreso a servicio técnico",
+      "applicability": "propio",
+      "content": "Según el certificado, el tiempo estimado de revisión o reparación de Coolbox es de 15 a 30 días, sujeto a la complejidad. Pide entregar el producto y los accesorios originales indicados, y efectuar respaldo de la información; algunos equipos deben ingresar desbloqueados para diagnóstico. El certificado también contempla posibles cargos por diagnóstico fuera de garantía y almacenamiento en determinados supuestos. Consulte el detalle y confirme los importes aplicables antes de entregar un producto."
+    }
+  ]
+}

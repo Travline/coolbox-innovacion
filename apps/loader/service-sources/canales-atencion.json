@@ -1,0 +1,19 @@
+{
+  "id": "canales-atencion",
+  "title": "Canales de atención",
+  "sourceUrl": "https://www.coolbox.pe/canales-de-atencion",
+  "checkedAt": "2026-11-13",
+  "reviewed": true,
+  "sections": [
+    {
+      "heading": "WhatsApp y correo",
+      "applicability": "ambos",
+      "content": "La página oficial publica el WhatsApp 966 032 014 y el correo servicioalcliente@rashperu.com. Para ambos indica atención de lunes a domingo de 8 a. m. a 10 p. m. Consultar la página para confirmar que los canales y horarios siguen vigentes."
+    },
+    {
+      "heading": "Teléfono, correo y chat",
+      "applicability": "ambos",
+      "content": "La página oficial indica atención telefónica en el 01 712 3212 de lunes a sábado de 9 a. m. a 6 p. m.; también presenta chat y correo con atención de lunes a domingo de 8 a. m. a 10 p. m. Los canales y horarios pueden cambiar: compruebe la página oficial antes de utilizarlos."
+    }
+  ]
+}

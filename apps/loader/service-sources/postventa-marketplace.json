@@ -1,0 +1,34 @@
+{
+  "id": "postventa-marketplace",
+  "title": "Postventa Marketplace",
+  "sourceUrl": "https://www.coolbox.pe/postventa-marketplace",
+  "checkedAt": "2026-11-13",
+  "reviewed": true,
+  "sections": [
+    {
+      "heading": "Vendedores y condiciones",
+      "applicability": "marketplace",
+      "content": "La página identifica los productos Marketplace como vendidos por vendedores asociados y señala que tienen sus propias políticas de cambios, devoluciones y garantía. Coolbox indica que puede acompañar o intermediar el trámite. La información específica debe confirmarse con el vendedor y la fuente oficial."
+    },
+    {
+      "heading": "Cambios y devoluciones Marketplace",
+      "applicability": "marketplace",
+      "content": "La política publicada contempla solicitudes por arrepentimiento o producto inconforme hasta 15 días calendario desde la entrega. Exige condiciones del producto y accesorios, componentes, manuales y empaques originales cuando corresponda; en promociones solicita todos los productos incluidos. Un cambio está sujeto al stock del vendedor y la solicitud puede requerir documentación y control de calidad. La página contiene condiciones y excepciones adicionales."
+    },
+    {
+      "heading": "Recojo y evaluación de solicitud Marketplace",
+      "applicability": "marketplace",
+      "content": "La política Marketplace indica contactar canales de atención para coordinar el recojo; pueden solicitarse documentos o fotos y el producto pasa por control de calidad del vendedor y/o Coolbox. Si se aprueba la solicitud, contempla cambio sujeto a stock, cupón o devolución según las condiciones indicadas. Si no pasa el control, la fuente indica que se devuelve el producto al cliente. El recojo por motivos no imputables al vendedor puede tener costo variable; confirme el caso específico y los plazos con atención al cliente."
+    },
+    {
+      "heading": "Producto Marketplace inconforme y restricciones",
+      "applicability": "marketplace",
+      "content": "Para un producto Marketplace inconforme, la página excluye el requisito de mantenerlo sellado, pero mantiene las demás condiciones descritas para su revisión. Indica que el recojo no tiene costo si se confirma la inconformidad y que se contactará al cliente en hasta dos días hábiles. La fuente enumera restricciones para videojuegos, productos de copia inmediata y tarjetas de memoria para PC, y prevé evaluar otras categorías conforme al artículo 97 del Código de Protección y Defensa del Consumidor. Verifique el texto completo y la garantía aplicable del vendedor."
+    },
+    {
+      "heading": "Garantía y vendedor Marketplace",
+      "applicability": "marketplace",
+      "content": "Los productos vendidos por Marketplace tienen garantía ofrecida por el vendedor asociado. La página describe condiciones y exclusiones, entre ellas daños por fluctuaciones eléctricas o desastres, intervención técnica no autorizada y discrepancias en números de serie cuando corresponda; para productos reacondicionados se aplican las condiciones de garantía del vendedor. La solicitud se coordina por canales oficiales y las condiciones se comprueban caso por caso."
+    }
+  ]
+}

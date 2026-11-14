@@ -1,0 +1,18 @@
+services:
+  api:
+    build:
+      context: .
+    init: true
+    env_file:
+      - .env
+    environment:
+      PORT: '3001'
+      MODEL_CACHE_DIR: /var/cache/coolbox-model
+    ports:
+      - '${COOLBOX_API_HOST_PORT:-3001}:3001'
+    volumes:
+      - model-cache:/var/cache/coolbox-model
+    stop_grace_period: 15s
+
+volumes:
+  model-cache:

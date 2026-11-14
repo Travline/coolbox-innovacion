@@ -25,9 +25,13 @@ Cada SKU contiene `skuId`, `name`, `reference`, `ean`, `images` ordenadas (`url`
 4. Validar registros y vectores y hacer una carga repetible que actualice productos existentes. Registrar errores y recuentos, sin presentar una carga parcial como completa. Los productos ausentes del archivo se conservan; los SKU y relaciones ausentes de un producto presente se eliminan.
 5. Actualizar la fecha del catálogo solo tras una carga válida. Conservar precios, stock e imágenes como datos importados, no como disponibilidad en tiempo real.
 
+La sustitución del JSON por el scraper ocurre solo después de completar todas las categorías. Si termina con error, el archivo anterior sigue presente y no debe confundirse con la extracción intentada. La salida y el código de terminación de ambos procesos deben revisarse en cada actualización; los comandos y consultas están en [Loader](loader.md#actualizaciones-y-recuperación).
+
+La escritura del loader es transaccional por producto, no para todo el catálogo. Si una ejecución se interrumpe, los productos ya confirmados y las categorías compartidas actualizadas pueden ser visibles junto con datos anteriores; `catalog_metadata.last_successful_import_at` conserva la última carga completa y no acredita que no existan cambios parciales. Corregir el fallo y repetir la carga del JSON completo válido. Una nueva carga sustituye SKU y relaciones de categoría de cada producto presente, pero no elimina productos ausentes del archivo. No se ofrece una publicación atómica ni una eliminación automática de productos ausentes.
+
 ## Documentos de servicio
 
-La implementación de carga es posterior. El responsable indicó que todavía no dispone de documentos; utilizar las fuentes públicas oficiales identificadas en [asistente.md](asistente.md). Preparar texto plano fiel a la fuente, con título, URL y fecha de consulta; generar vectores con el modelo seleccionado y persistirlos en Turso. El procedimiento concreto de inserción y actualización de documentos se documentará cuando se implemente esa funcionalidad; no existe todavía un comando para cargar documentos. Explicar cómo añadir fuentes, verificar vigencia y volver a indexarlas sin perder trazabilidad. Nunca inventar condiciones o datos de contacto.
+La migración 003 y el cargador manual de fuentes están preparados y probados localmente; se aplicaron en Turso y cargaron cinco fuentes oficiales con 18 fragmentos cotejados el 13 de noviembre de 2026. Debe comprobarse su vigencia antes de cada presentación. El procedimiento y los límites están en [fuentes de servicio](../apps/loader/SERVICE_DOCUMENTS.md). Nunca inventar condiciones o datos de contacto.
 
 ## Recuperación
 

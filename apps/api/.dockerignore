@@ -1,0 +1,9 @@
+node_modules
+.cache
+dist
+.env
+.env.*
+!.env.example
+.git
+coverage
+*.tsbuildinfo

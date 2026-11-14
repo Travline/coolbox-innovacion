@@ -1,0 +1,7 @@
+.service-sources { display: grid; gap: .75rem; margin: .75rem 0; }
+.service-source { border: 1px solid #ddd; border-radius: .5rem; padding: .75rem; background: #fff; color: #222; overflow-wrap: anywhere; }
+.service-source h3 { font-size: .95rem; margin: 0 0 .3rem; }
+.service-source p { margin: .4rem 0; font-size: .85rem; }
+.service-source .service-scope { color: #555; font-size: .75rem; }
+.service-source .service-content { white-space: pre-wrap; }
+.service-source a { color: #ae002b; }
