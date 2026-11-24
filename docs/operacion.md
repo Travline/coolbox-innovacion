@@ -44,3 +44,7 @@ Comprobar navegación directa a una ruta interna desplegada, conexión de solo l
 ## Ejecución preparada y verificada
 
 La tienda y la API tienen instalación y build propios. La guía de variables, Vercel y Docker está en [DEPLOYMENT.md](../apps/api/DEPLOYMENT.md). Se construyó la imagen Docker local, se comprobó `/health`, cierre y generación de un vector de 384 dimensiones con el modelo dentro del contenedor. El flujo HTTP local de servicio recuperó fragmentos reales sin Google. La navegación, recursos y streaming tras el despliegue Vercel siguen pendientes; el responsable realiza el despliegue manual.
+
+## Servicio de predicción
+
+Los paneles de operaciones usan la tienda en Vercel y FastAPI en Render. La migración, el bucket privado, las variables y el arranque con Docker se describen en la [guía de predicción de demanda](prediccion-demanda.md#render-vercel-y-supabase).

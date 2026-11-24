@@ -17,3 +17,7 @@ apps/loader/.cache/
 
 *.tsbuildinfo
 apps/api/.cache/
+
+__pycache__/
+.venv/
+apps/ml/.local/

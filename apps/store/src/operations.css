@@ -1,0 +1,65 @@
+.ops {
+  max-width: 76rem;
+  margin: auto;
+  padding: clamp(1rem, 4vw, 3rem);
+  color: #202521;
+}
+
+.ops-header, .ops-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.ops-header h1 { font-size: clamp(1.7rem, 4vw, 2.5rem); margin: .4rem 0; }
+.ops h2 { font-size: 1.2rem; margin: 0 0 .75rem; }
+.ops > p { margin: .9rem 0; }
+.ops a { color: #12652f; text-decoration: underline; }
+.ops button, .ops input:not([type=checkbox]), .ops select {
+  border: 1px solid #a9b7ad;
+  border-radius: .45rem;
+  padding: .55rem .8rem;
+  background: #fff;
+  color: #202521;
+  max-width: 100%;
+}
+.ops button { background: #176532; border-color: #176532; color: #fff; cursor: pointer; }
+.ops button:disabled { opacity: .65; cursor: default; }
+.ops :is(button, input, select, a):focus-visible { outline: 3px solid #247848; outline-offset: 3px; }
+.ops label { display: grid; justify-items: start; gap: .3rem; }
+.ops .ops-check { display: flex; align-items: center; gap: .5rem; }
+.ops input[type=number] { width: 6rem; }
+.ops-controls { justify-content: flex-start; align-items: flex-end; }
+.ops-check { align-self: center; }
+.ops-filter { margin-bottom: 1rem; }
+.ops-card {
+  background: #fff;
+  border: 1px solid #d4dfd6;
+  border-radius: .65rem;
+  padding: 1.15rem;
+  margin-bottom: 1rem;
+}
+.ops-login { max-width: 28rem; display: grid; gap: .9rem; justify-items: start; }
+.ops-login label, .ops-login input { width: 100%; }
+.ops-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(12rem, 100%), 1fr)); gap: .8rem; }
+.ops-grid strong { display: block; font-size: 1.8rem; }
+.ops small { display: block; color: #535f55; }
+.ops-note { font-size: .92rem; color: #535f55; }
+.ops-error { color: #a5221b; }
+.ops-bars { padding: 0; margin: 0; list-style: none; }
+.ops-bars li {
+  display: grid;
+  grid-template-columns: minmax(6rem, 1fr) minmax(4rem, 3fr) minmax(6rem, 1.5fr);
+  gap: .6rem;
+  align-items: center;
+  padding-block: .4rem;
+}
+.ops-bars meter { width: 100%; height: 1rem; }
+.ops-table { overflow-x: auto; }
+.ops table { width: 100%; border-collapse: collapse; text-align: left; font-variant-numeric: tabular-nums; }
+.ops th, .ops td { border-bottom: 1px solid #d4dfd6; padding: .65rem .5rem; }
+.ops thead { background: #edf4ee; }
+.ops tbody tr:last-child > * { border-bottom: 0; }

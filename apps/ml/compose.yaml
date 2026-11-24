@@ -1,0 +1,21 @@
+services:
+  ml:
+    build:
+      context: ../..
+      dockerfile: apps/ml/Dockerfile
+    env_file: .env
+    ports:
+      - "127.0.0.1:8000:8000"
+    environment:
+      PORT: "8000"
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health', timeout=3)"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+    volumes:
+      - demo_state:/srv/apps/ml/.local
+      - ../scrapper/coolbox_productos.json:/srv/catalog.json:ro
+
+volumes:
+  demo_state:

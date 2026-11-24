@@ -1,7 +1,8 @@
+import { OperationsPanel } from './OperationsPanel';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import type { FormEvent } from 'react';
 import { createRoot } from 'react-dom/client';
-import { BrowserRouter, Link, Route, Routes, useNavigate, useParams, useSearchParams } from 'react-router-dom';
+import { BrowserRouter, Link, Route, Routes, useLocation, useNavigate, useParams, useSearchParams } from 'react-router-dom';
 import { ProductDetail } from './ProductDetail';
 import { RecommendationCards } from './RecommendationCards';
 import { ServiceSources } from './ServiceSources';
@@ -137,4 +138,20 @@ function DetailRoute() {
   useEffect(() => { let active = true; if (db) db.execute('SELECT category_id, name, path FROM categories ORDER BY name').then((result) => { if (active) setCategories(result.rows.map((row) => ({ id: String(row.category_id), name: String(row.name), path: typeof row.path === 'string' ? row.path : null }))); }).catch(() => { }); return () => { active = false; }; }, [db]);
   return <><StoreHeader categories={categories} /><ProductDetail db={db} productId={productId} skuId={params.get('sku')} onBack={() => navigate('/')} onVariantChange={(sku) => setParams({ sku })} /></>;
 }
-createRoot(document.getElementById('root')!).render(<BrowserRouter><Routes><Route path="/" element={<Store />} /><Route path="/producto/:productId" element={<DetailRoute />} /></Routes><Chat /><CartPanel /></BrowserRouter>);
+function StoreOverlays() {
+  const { pathname } = useLocation();
+  if (/^\/(admin|desarrollador)\/?$/i.test(pathname)) return null;
+  return <><Chat /><CartPanel /></>;
+}
+
+createRoot(document.getElementById('root')!).render(
+  <BrowserRouter>
+    <Routes>
+      <Route path="/" element={<Store />} />
+      <Route path="/producto/:productId" element={<DetailRoute />} />
+      <Route path="/admin" element={<OperationsPanel key="admin" role="admin" />} />
+      <Route path="/desarrollador" element={<OperationsPanel key="dev" role="dev" />} />
+    </Routes>
+    <StoreOverlays />
+  </BrowserRouter>,
+);

@@ -8,7 +8,8 @@
 | Tienda React | Catálogo, detalle, búsqueda, carrito local e interfaz del chat. | Inicio, catálogo, filtros, detalle, carrito local y chat implementados. |
 | API Express + TypeScript | Orquestar el asistente, sus herramientas y acceso de servidor a Turso. | Recuperación y chat implementados; recuperación, streaming y respuestas de servicio implementados; relevancia calibrada en muestra limitada. |
 | `apps/loader/` | Leer el JSON, generar embeddings locales y cargar productos en Turso/libSQL. | Implementado; requiere aplicar migraciones y configurar credenciales. |
-| `database/` | Conservar migraciones versionadas de Turso/libSQL. | SQL 001 y 002 para catálogo; 003 de servicio aplicada en Turso. |
+| `database/` | Conservar migraciones versionadas de Turso/libSQL. | SQL 001 y 002 para catálogo; 003 de servicio aplicada en Turso. 004 para metadatos de entrenamiento, pendiente de aplicación remota. |
+| FastAPI en `apps/ml/` | Pronóstico de demanda e inventario, sesiones por rol y entrenamiento asíncrono. | Implementado para datos de demostración. |
 | Turso/libSQL | Productos, documentos de servicio y vectores. | Productos y embeddings de catálogo, cinco fuentes de servicio y 18 fragmentos cargados y comprobados. |
 
 Cada aplicación tiene su propio manifiesto, lockfile y pipeline de pnpm; no usar pnpm workspaces ni Turborepo. React Router, Tailwind, Zustand, Zod y AI SDK forman parte del stack acordado; proponer y consultar nuevas dependencias relevantes antes de seleccionarlas.
@@ -19,6 +20,7 @@ Cada aplicación tiene su propio manifiesto, lockfile y pipeline de pnpm; no usa
 2. Navegador → cliente Turso basado en `fetch` → catálogo público; el carrito queda en `localStorage`.
 3. Navegador → API Express → modelo de Google mediante AI SDK → herramientas de lectura en Turso → respuesta en streaming y recomendaciones estructuradas.
 4. Textos oficiales revisados → ingesta de documentos y vectores → búsqueda de información de servicio.
+5. Paneles React → proxy de la tienda → FastAPI (Render) → metadatos en Turso y versiones en Supabase Storage. Ver [predicción de demanda](prediccion-demanda.md).
 
 La clave de Google y las credenciales de escritura permanecen en servidor o en el entorno del loader. La credencial de catálogo del navegador es visible: todos los datos accesibles con ella deben considerarse públicos, incluidos documentos y vectores si comparte acceso a sus tablas. Una credencial de solo lectura no garantiza aislamiento por tabla; verificar el alcance real de Turso antes de cargar información no pública. No guardar datos privados en esa base accesible públicamente.
 

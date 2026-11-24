@@ -1,0 +1,42 @@
+services:
+  - type: web
+    name: coolbox-ml
+    runtime: docker
+    plan: free
+    dockerContext: .
+    dockerfilePath: ./apps/ml/Dockerfile
+    healthCheckPath: /health
+    buildFilter:
+      paths:
+        - apps/ml/**
+        - database/004_demand_forecasts.sql
+        - render.yaml
+    envVars:
+      - key: ADMIN_EMAIL
+        sync: false
+      - key: ADMIN_PASS
+        sync: false
+      - key: DEV_EMAIL
+        sync: false
+      - key: DEV_PASS
+        sync: false
+      - key: ML_SESSION_SECRET
+        generateValue: true
+      - key: ML_ALLOWED_ORIGINS
+        sync: false
+      - key: ML_COOKIE_SECURE
+        value: "true"
+      - key: TURSO_DATABASE_URL
+        sync: false
+      - key: TURSO_AUTH_TOKEN
+        sync: false
+      - key: S3_ENDPOINT_URL
+        sync: false
+      - key: S3_REGION
+        sync: false
+      - key: S3_BUCKET
+        sync: false
+      - key: S3_ACCESS_KEY_ID
+        sync: false
+      - key: S3_SECRET_ACCESS_KEY
+        sync: false

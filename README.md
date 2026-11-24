@@ -6,6 +6,8 @@ Prototipo de una tienda que reproduce la experiencia visual de Coolbox y añade 
 
 Existe `apps/scrapper/`, un scraper en JavaScript que consulta categorías de Coolbox y genera un JSON, y migraciones SQL en `database/`. El loader de productos y embeddings está implementado en `apps/loader/`. La tienda en `apps/store/` muestra un catálogo y chat en memoria; la API en `apps/api/` consulta productos reales y genera respuestas verificadas con Google. Una consulta real devolvió recomendaciones y otra confirmó eventos de streaming; las demás pruebas del modelo son simuladas; el catálogo incluye búsqueda, filtros y detalle, y el chat transmite eventos progresivos. El carrito persiste localmente y las respuestas de servicio muestran fragmentos oficiales con fuente y fecha; las comprobaciones desplegadas siguen pendientes. La muestra de recuperación se evaluó contra Turso, con las limitaciones documentadas en la API. Las migraciones deben aplicarse manualmente antes de cargar en una base nueva; la migración de fuentes de servicio se aplicó a la instancia del proyecto y se cargaron cinco fuentes oficiales.
 
+La tienda también cuenta con paneles de demostración para pronosticar demanda y comparar modelos. El servicio y su configuración se explican en [Predicción de demanda e inventario](docs/prediccion-demanda.md).
+
 ## Ejecutar el scraper existente
 
 Se necesita Node.js 20.19 o posterior y pnpm; el paquete declara pnpm 10.14.0. Desde `apps/scrapper/`:

@@ -4,7 +4,27 @@
   "installCommand": "pnpm install --frozen-lockfile",
   "buildCommand": "pnpm build",
   "outputDirectory": "dist",
+  "functions": {
+    "api/ml-proxy.js": {
+      "maxDuration": 90
+    }
+  },
   "rewrites": [
-    { "source": "/producto/:path*", "destination": "/index.html" }
+    {
+      "source": "/api/ml/:path*",
+      "destination": "/api/ml-proxy?ml_path=:path*"
+    },
+    {
+      "source": "/producto/:path*",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/admin",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/desarrollador",
+      "destination": "/index.html"
+    }
   ]
 }
