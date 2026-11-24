@@ -2,7 +2,9 @@
 
 from collections import deque
 from contextlib import asynccontextmanager
+from datetime import date, timedelta
 from functools import lru_cache
+import gzip
 from hashlib import sha256
 import hmac
 import json
@@ -13,6 +15,7 @@ import time
 from typing import Literal
 from uuid import UUID
 
+from botocore.exceptions import BotoCoreError, ClientError
 from dotenv import load_dotenv
 from fastapi import Depends, FastAPI, HTTPException, Query, Request, Response
 from fastapi.exceptions import RequestValidationError
@@ -20,8 +23,8 @@ from fastapi.responses import JSONResponse
 from itsdangerous import BadData, URLSafeTimedSerializer
 from pydantic import BaseModel, Field, SecretStr
 
-from inventory import forecast_indicators
-from jobs import enqueue, model_key, worker
+from inventory import category_sales_history, forecast_indicators
+from jobs import dataset_key, enqueue, model_key, worker
 from persistence import configuration
 
 load_dotenv()
@@ -58,7 +61,13 @@ async def lifespan(app):
     def forecasts(run_id, model):
         return json.loads(app.state.artifacts.get(model_key(run_id, model, 'forecast.json')))
 
+    @lru_cache(maxsize=4)
+    def sales_history(run_id):
+        dataset = json.loads(gzip.decompress(app.state.artifacts.get(dataset_key(run_id))))
+        return category_sales_history(dataset)
+
     app.state.forecasts = forecasts
+    app.state.sales_history = sales_history
     stop, wake = Event(), Event()
     app.state.wake = wake
     thread = Thread(target=worker, args=(app.state.db, app.state.artifacts, stop, wake), daemon=True)
@@ -240,14 +249,29 @@ def dashboard(lead_days: int = Query(7, ge=1, le=15), coverage_days: int = Query
     if not active:
         return {'active': None, 'skus': [], 'categories': []}
     rows = app.state.forecasts(active['run_id'], active['model'])
+    try:
+        history = app.state.sales_history(active['run_id'])
+    except (OSError, ValueError, BotoCoreError, ClientError):
+        LOGGER.exception('No se pudo leer el historial de %s', active['run_id'])
+        history = {}
+    forecast_start = date.fromisoformat(active['report']['forecast_start'])
+    days = [(forecast_start + timedelta(days=offset)).isoformat()
+            for offset in range(active['report']['horizon_days'])]
     skus, categories = [], {}
     for row in rows:
         forecast = row['daily_forecast']
         scores = forecast_indicators(forecast, row['stock'], lead_days, coverage_days, row['price'])
         skus.append({**row, **scores})
-        category = categories.setdefault(row['category'], {
-            'name': row['category'], 'forecast_units': 0, 'estimated_revenue': None, 'unpriced_skus': 0,
-        })
+        name = row['category']
+        if name not in categories:
+            categories[name] = {
+                'name': name, 'forecast_units': 0, 'estimated_revenue': None, 'unpriced_skus': 0,
+                'history': history.get(name, []),
+                'projection': [{'day': day, 'units': 0} for day in days],
+            }
+        category = categories[name]
+        for point, units in zip(category['projection'], forecast, strict=True):
+            point['units'] += units
         category['forecast_units'] += scores['forecast_units']
         if scores['estimated_revenue'] is None:
             category['unpriced_skus'] += 1

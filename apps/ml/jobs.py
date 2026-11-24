@@ -17,6 +17,10 @@ def model_key(run_id, model, filename):
     return f'demand/v1/{run_id}/{model}/{filename}'
 
 
+def dataset_key(run_id):
+    return f'demand/v1/{run_id}/dataset.json.gz'
+
+
 def json_bytes(value):
     return json.dumps(value, ensure_ascii=False, allow_nan=False).encode()
 
@@ -42,7 +46,7 @@ def train(db, artifacts, job):
     sales, inventory, report = build_dataset(db, bool(job['compare_stock']))
     advance(db, run_id, 'Guardando datos de entrenamiento')
     dataset = {'sales': sales, 'inventory': inventory, 'metadata': report}
-    artifacts.put(f'demand/v1/{run_id}/dataset.json.gz', gzip.compress(json_bytes(dataset)), 'application/gzip')
+    artifacts.put(dataset_key(run_id), gzip.compress(json_bytes(dataset)), 'application/gzip')
     metrics_by_model = {}
 
     for model_id, model, metrics, forecast in compare_and_fit(sales):

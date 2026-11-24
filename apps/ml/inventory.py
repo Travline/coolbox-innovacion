@@ -1,6 +1,25 @@
 """Cálculos explícitos para sugerencias de inventario de demostración."""
 
+from datetime import date, timedelta
 import math
+
+
+def category_sales_history(dataset):
+    """Sum daily units across the SKU in each category for the last 30 days."""
+    categories = {item['sku_id']: item['category'] for item in dataset['inventory']}
+    last_day = date.fromisoformat(dataset['metadata']['history_end'])
+    start = (last_day - timedelta(days=29)).isoformat()
+    end = last_day.isoformat()
+    totals = {}
+    for sale in dataset['sales']:
+        day = sale['day']
+        if start <= day <= end:
+            daily = totals.setdefault(categories[sale['sku_id']], {})
+            daily[day] = daily.get(day, 0) + sale['units']
+    return {
+        category: [{'day': day, 'units': units} for day, units in sorted(daily.items())]
+        for category, daily in totals.items()
+    }
 
 
 def forecast_indicators(forecast, stock, lead_days, coverage_days, price):

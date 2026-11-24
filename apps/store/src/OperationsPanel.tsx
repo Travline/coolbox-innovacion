@@ -3,6 +3,7 @@ import type { FormEvent } from 'react';
 import { Link } from 'react-router-dom';
 import { modelNames, operations, OperationsError } from './operations';
 import type { Active, Dashboard, Model, Role, Run } from './operations';
+import { SalesTrend } from './SalesTrend';
 import './operations.css';
 
 const units = new Intl.NumberFormat('es-PE', { maximumFractionDigits: 1 });
@@ -166,6 +167,7 @@ function InventoryPanel({ onError, clearError }: PanelProps) {
         <div className="ops-card">SKU a reponer<strong>{needsReorder.length}</strong>
           <small>{needsReorder.reduce((sum, sku) => sum + (sku.suggested_reorder ?? 0), 0)} unidades sugeridas</small></div>
       </div>
+      <SalesTrend categories={categories} category={category} />
       <section className="ops-card">
         <h2>Pronóstico por categoría</h2>
         <ul className="ops-bars">{categories.map((row) => <li key={row.name}>

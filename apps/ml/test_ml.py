@@ -79,7 +79,12 @@ class WorkflowTests(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(result.json()['role'], role)
 
     async def test_train_activate_and_restore_active_forecast(self):
-        with patch('demand.catalog_sample', return_value=([SAMPLE], '2026-11-15T10:00:00Z')):
+        sample = [
+            SAMPLE,
+            {**SAMPLE, 'sku_id': 'sku-2', 'product_id': 'p-2'},
+            {**SAMPLE, 'sku_id': 'sku-3', 'product_id': 'p-3', 'category_id': '47'},
+        ]
+        with patch('demand.catalog_sample', return_value=(sample, '2026-11-15T10:00:00Z')):
             async with running_api() as client:
                 self.assertEqual((await client.get('/health')).status_code, 200)
                 self.assertEqual((await client.get(f'{PREFIX}/dashboard')).status_code, 401)
@@ -115,7 +120,18 @@ class WorkflowTests(unittest.IsolatedAsyncioTestCase):
             self.assertEqual(result['active']['run_id'], run_id)
             self.assertEqual(result['active']['model'], 'forest')
             self.assertEqual(len(result['skus'][0]['daily_forecast']), 30)
-            self.assertEqual(result['categories'][0]['forecast_units'], result['skus'][0]['forecast_units'])
+            for category in result['categories']:
+                daily = [sku['daily_forecast'] for sku in result['skus'] if sku['category'] == category['name']]
+                self.assertAlmostEqual(category['forecast_units'], sum(map(sum, daily)))
+                self.assertEqual(len(category['history']), 30)
+                self.assertEqual(category['history'][-1]['day'], '2026-11-24')
+                self.assertEqual(category['projection'][0]['day'], '2026-11-25')
+                self.assertEqual([point['units'] for point in category['projection']], list(map(sum, zip(*daily))))
+                category_ids = {sku['sku_id'] for sku in result['skus'] if sku['category'] == category['name']}
+                for point in category['history']:
+                    expected = sum(row['units'] for row in data['sales']
+                                   if row['day'] == point['day'] and row['sku_id'] in category_ids)
+                    self.assertEqual(point['units'], expected)
             self.assertEqual((await client.post(f'{PREFIX}/logout', headers=ORIGIN, json={})).status_code, 204)
             self.assertEqual((await client.get(f'{PREFIX}/dashboard')).status_code, 401)
 

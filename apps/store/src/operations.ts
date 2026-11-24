@@ -31,9 +31,18 @@ export type Run = {
   report: Report | null;
 };
 
+export type DailyUnits = { day: string; units: number };
+
 export type Dashboard = {
   active: Active | null;
-  categories: { name: string; forecast_units: number; estimated_revenue: number | null; unpriced_skus: number }[];
+  categories: {
+    name: string;
+    forecast_units: number;
+    estimated_revenue: number | null;
+    unpriced_skus: number;
+    history?: DailyUnits[];
+    projection?: DailyUnits[];
+  }[];
   skus: {
     sku_id: string;
     name: string;

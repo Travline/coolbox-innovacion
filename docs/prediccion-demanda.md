@@ -14,6 +14,8 @@ La tienda incluye dos rutas en español. `/admin` muestra los indicadores del mo
 
 El administrador puede ajustar el plazo de entrega y la cobertura entre 1 y 15 días cada uno. Los valores iniciales son 7 y 14. Si el stock es desconocido, se omiten la cobertura, el riesgo y la reposición. El stock de referencia pertenece a la versión entrenada. La recomendación supone que no hay compras en tránsito, stock reservado ni pedidos mínimos. La API deja las decisiones de compra al usuario.
 
+En `/admin`, el gráfico de ventas y proyección compara los últimos 30 días del historial de referencia en verde con los 30 días del pronóstico del modelo activo en morado. Usa el selector de categoría o **Todas** para sumar la muestra completa. La línea vertical marca el comienzo de la proyección y **Ver unidades por fecha** abre los valores diarios. El historial conserva la procedencia del entrenamiento y puede incluir datos sintéticos y caídas de stock imputadas. El pronóstico suma las predicciones de cada SKU por fecha. Ambos se leen de los artefactos de la versión activa, incluidas las versiones ya entrenadas.
+
 ## Preparación de datos y evaluación
 
 - Una lectura de Turso obtiene hasta ocho SKU por categoría principal, con una variante por producto. Los productos con varias categorías cuentan una sola vez. La generación usa una semilla por SKU y crea 93 observaciones diarias a partir del 24 de agosto de 2026.

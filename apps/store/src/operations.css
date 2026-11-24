@@ -63,3 +63,70 @@
 .ops th, .ops td { border-bottom: 1px solid #d4dfd6; padding: .65rem .5rem; }
 .ops thead { background: #edf4ee; }
 .ops tbody tr:last-child > * { border-bottom: 0; }
+
+.ops-trend-history { --trend-color: #256347; }
+.ops-trend-projection { --trend-color: #6041b3; }
+.ops-trend-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .4rem 1rem;
+  list-style: none;
+  padding: 0;
+  margin: .7rem 0;
+}
+.ops-trend-legend li::before {
+  content: '';
+  display: inline-block;
+  width: .75em;
+  height: .75em;
+  margin-inline-end: .4rem;
+  background: var(--trend-color);
+}
+.ops-trend-chart {
+  --trend-height: clamp(8rem, 24vw, 13rem);
+  display: flex;
+  gap: .55rem;
+  margin: 1.25rem 0 .7rem;
+}
+.ops-trend-scale {
+  display: flex;
+  height: var(--trend-height);
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: right;
+  color: #535f55;
+  font-size: .78rem;
+}
+.ops-trend-plot { display: flex; min-width: 0; flex: 1; }
+.ops-trend-group { min-width: 0; }
+.ops-trend-group + .ops-trend-group { border-inline-start: 2px dashed #778481; }
+.ops-trend-columns {
+  display: flex;
+  padding-inline: 2px;
+  height: var(--trend-height);
+  border-block: 1px solid #ccd6ce;
+  background: linear-gradient(to bottom, transparent calc(50% - .5px), #dfe6e0 calc(50% - .5px), #dfe6e0 calc(50% + .5px), transparent calc(50% + .5px));
+}
+.ops-trend-slot { display: flex; flex: 1; min-width: 0; align-items: flex-end; }
+.ops-trend-bar {
+  width: 100%;
+  margin-inline: 1px;
+  background: var(--trend-color);
+  border-radius: 2px 2px 0 0;
+}
+.ops-trend-slot:hover { background: #e0e6f0; }
+.ops-trend-dates {
+  display: flex;
+  justify-content: space-between;
+  gap: .2rem;
+  padding-inline: .28rem;
+  margin-top: .4rem;
+  font-size: clamp(.62rem, 2vw, .8rem);
+  color: #535f55;
+}
+.ops-trend-data summary { width: fit-content; cursor: pointer; color: #12652f; }
+.ops-trend-data[open] .ops-table { max-height: 22rem; margin-top: .6rem; overflow: auto; }
+
+@media (max-width: 34rem) {
+  .ops-trend-bar { margin-inline: .4px; }
+}
